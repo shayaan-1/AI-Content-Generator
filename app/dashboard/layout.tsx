@@ -9,7 +9,7 @@ const layout = ({
   }>) => {
   return (
     
-    <div>
+    <div className='bg-slate-100 min-h-screen'>
         <div className='md:w-64 hidden md:block fixed'>
             <SideNav/>
         </div>
