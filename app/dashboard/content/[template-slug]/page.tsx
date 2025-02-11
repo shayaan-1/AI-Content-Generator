@@ -1,6 +1,6 @@
 'use client'
 
-import React, { use, useState } from 'react'
+import React, { use, useContext, useState } from 'react'
 import FormSection from '../_components/FormSection'
 import OutputSection from '../_components/OutputSection'
 import { TEMPLATE } from '../../_components/TemplateListSection'
@@ -13,6 +13,8 @@ import { useUser } from '@clerk/nextjs'
 import { db } from '@/utils/db'
 import { AIOutput } from '@/utils/schema'
 import moment from 'moment'
+import { TotalUsageContext } from '@/app/(context)/TotalUsageContext'
+import { useRouter } from 'next/router'
 
 interface PROPS {
     params: Promise<{ 'template-slug': string }>
@@ -27,8 +29,15 @@ const CreateNewContent = ({ params }: PROPS) => {
   const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState<string>('');
   const user = useUser();
+  const [totalUsage, setTotalUsage] = useContext(TotalUsageContext);
+  const router =  useRouter();
 
   const GenerateAIContent = async (formData: any) => {
+    if(totalUsage>=10000){
+      console.log('Usage limit reached');
+      router.push('/dashboard/billing');
+      return;
+    }
     setLoading(true);
     const selectedPrompt = selectedTemplate?.aiPrompt;
     const finalPrompt = JSON.stringify(formData) + ', ' + selectedPrompt;
