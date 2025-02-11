@@ -1,4 +1,3 @@
-
 import Template from '@/app/(data)/Template'
 import { Button } from '@/components/ui/button'
 import { db } from '@/utils/db'
@@ -64,4 +63,4 @@ async function History() {
   )
 }
 
-export default History
+export default History;
