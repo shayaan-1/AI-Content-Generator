@@ -24,7 +24,6 @@ const TemplateListSection = ({userSearchInput}:any) => {
   const [templateList, setTemplateList] = useState(Template)
 
   useEffect(() => {
-    // console.log(userSearchInput)
     if(userSearchInput){
         const filteredTemplates = Template.filter((item:TEMPLATE) => item.name.toLowerCase().includes(userSearchInput.toLowerCase()))
         setTemplateList(filteredTemplates)

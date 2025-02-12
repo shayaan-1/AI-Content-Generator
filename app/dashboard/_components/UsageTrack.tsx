@@ -37,9 +37,9 @@ const GetTotalUsage=(result:HISTORY[])=>{
             <h2 className='font-medium'>Credits</h2>
             <div className='w-full rounded-full h2 mt-3 bg-[#9981f9]'>
                 <div className='h-2 bg-white rounded-full' 
-                style={{width: (totalUsage/10000)*100 + '%'}}></div>
+                style={{width: (totalUsage/15000)*100 + '%'}}></div>
             </div>
-            <h2 className='text-sm my-2'>{totalUsage}/10,000 Credits used</h2>
+            <h2 className='text-sm my-2'>{totalUsage}/15,000 Credits used</h2>
         </div>
         <Button variant={'secondary'} className='w-full my-3 text-primary'>Upgrade</Button>
     </div>
